@@ -3,34 +3,43 @@
 # 4/23/2025
 # This program takes a float amount in dollars and calculates the most efficient combination of dollars, quarters, dimes, nickels, and pennies.
 
-# Get the amount of money from the user
 amount = float(input("Enter a money amount: $ "))
-
-# Convert to cents (integer)
 cents = int(round(amount * 100))
 
 if cents == 0:
     print("No change")
 else:
-    # Dictionary to store coin names and their values in cents
-    coins = {
-        "dollar": 100,
-        "quarter": 25,
-        "dime": 10,
-        "nickel": 5,
-        "penny": 1
-    }
+    dollars = cents // 100
+    cents = cents % 100
+    if dollars == 1:
+        print("1 dollar")
+    elif dollars > 1:
+        print(f"{dollars} dollars")
 
- # Loop through each coin and calculate how many of each is needed
-    for coin_name, coin_value in coins.items():
-        count = cents // coin_value
-        cents %= coin_value  # Get the remaining cents after this coin
+    quarters = cents // 25
+    cents = cents % 25
+    if quarters == 1:
+        print("1 quarter")
+    elif quarters > 1:
+        print(f"{quarters} quarters")
 
-        if count == 1:
-            print(f"{count} {coin_name}")
-        elif count > 1:
-            # Make 'penny' plural as 'pennies', not 'pennys'
-            if coin_name == "penny":
-                print(f"{count} pennies")
-            else:
-                print(f"{count} {coin_name}s")
+    dimes = cents // 10
+    cents = cents % 10
+    if dimes == 1:
+        print("1 dime")
+    elif dimes > 1:
+        print(f"{dimes} dimes")
+
+    nickels = cents // 5
+    cents = cents % 5
+    if nickels == 1:
+        print("1 nickel")
+    elif nickels > 1:
+        print(f"{nickels} nickels")
+
+    pennies = cents
+    if pennies == 1:
+        print("1 penny")
+    elif pennies > 1:
+        print(f"{pennies} pennies")
+
